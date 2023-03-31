@@ -18,27 +18,27 @@ This repository shows you how to create secret in your cluster from Hashicorp Va
 
 ## How to
 
-1. Create your cluster - install Vault helm chart
+1. Create your cluster / install Vault and External-Secret helm chart / configure Vault
 
     ```bash
     make start
     ```
 
-2. Inject environments variables in as encrypted key value in Vault
+2. Inject example variable as encrypted key value in Vault
 
     ```bash
-    make 
+    make kv
     ```
 
 3. Create secret in your cluster from encrypted key value 
 
     ```bash
-    make 
+    make secret
     ```
 
 ## Cleanup your system
 
 1. delete everything in your system about this project
     ```bash
-    make delete
+    make cleanup
     ```
