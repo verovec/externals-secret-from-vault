@@ -2,7 +2,7 @@
 
 This repository shows you how to create secret in your cluster from Hashicorp Vault
 
-:warning: Never transform encrypted variable from Vault in base64 encoded data for sensitive values. You may prefer inject these variables directly in pod where they are needed.
+:warning: Never transform encrypted variable from Vault in base64 encoded data for sensitive values is they are not RBAC'd. You may prefer inject these variables directly in pod where they are needed.
 
 
 ## Prerequisites
