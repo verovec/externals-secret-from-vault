@@ -32,17 +32,17 @@ else
         kubectl create ns $namespace;
     done
 
+    # External secret installation
+    helm upgrade --install external-secrets ./k8s/charts/external-secrets \
+        -f ./k8s/charts/external-secrets/values.yaml \
+        -n external-secrets
+
     # Vault installation
     helm upgrade --install vault ./k8s/charts/vault \
         -f ./k8s/charts/vault/values.yaml \
         -n vault \
         --set server.dataStorage.storageClass=local-path \
         --set server.auditStorage.storageClass=local-path;
-
-    # External secrets installation
-    helm upgrade --install external-secrets ./k8s/charts/external-secrets \
-        -f ./k8s/charts/external-secrets/values.yaml \
-        -n external-secrets;
 
     # Wait for Vault in running state
     while [[ $(kubectl get pods vault-0 -n vault -o 'jsonpath={..status.phase}') != "Running" ]]
